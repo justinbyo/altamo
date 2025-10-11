@@ -37,10 +37,21 @@ A beginner-friendly Next.js application with local development server and live r
 ```
 altamo/
 ├── app/                    # Main application directory (App Router)
+│   ├── checkout/           # Checkout page route
+│   │   └── page.js        # Checkout page - order summary, payment, gratuity
+│   ├── components/         # Reusable components
+│   │   ├── Navigation.js  # Navigation bar with search and cart
+│   │   ├── Payment.js     # Payment method selector
+│   │   ├── ProductItem.js # Individual menu item card
+│   │   └── ProductList.js # List of menu items by category
+│   ├── data/              # Data files
+│   │   └── products.js    # Menu items organized by category
+│   ├── summary/           # Order summary page route
+│   │   └── page.js        # Order confirmation page
 │   ├── favicon.ico        # Website icon
 │   ├── globals.css        # Global styles and Tailwind CSS
 │   ├── layout.js          # Root layout component (wraps all pages)
-│   └── page.js            # Home page component
+│   └── page.js            # Home/Menu page - main ordering interface
 ├── public/                # Static assets (images, icons, etc.)
 ├── .eslintrc.json         # ESLint configuration for code quality
 ├── .gitignore             # Git ignore file
@@ -54,17 +65,81 @@ altamo/
 └── tailwind.config.js     # Tailwind CSS configuration
 ```
 
+## 📄 Pages
+
+### Home (`/` - `app/page.js`)
+The main menu page where users can:
+- Browse menu items organized by category (Cocktails, Beer, Wine, Appetizers, Sandwiches, Pizza, Entrees, Dessert)
+- Search for specific items using the search bar
+- Add items to their order
+- Navigate to checkout
+
+### Checkout (`/checkout` - `app/checkout/page.js`)
+Order review and payment page where users can:
+- Review their order items and quantities
+- Select payment method (Credit/Debit Card, Apple Pay, Google Pay, Cash)
+- Choose gratuity percentage (15%, 18%, 20%, 25%, or custom)
+- See order summary with subtotal, gratuity, and total
+- Submit their order
+
+### Summary (`/summary` - `app/summary/page.js`)
+Order confirmation page that displays:
+- Order confirmation with unique order number
+- Complete order details
+- Payment method and gratuity breakdown
+- Options to edit order or change payment/gratuity
+
+## 🧩 Components
+
+### Navigation (`app/components/Navigation.js`)
+Navigation bar that adapts based on current page:
+- **On Home:** Shows search input and checkout button with cart count
+- **On Checkout:** Shows "Back to Order" link
+
+### ProductList (`app/components/ProductList.js`)
+Displays menu items grouped by category with support for search filtering
+
+### ProductItem (`app/components/ProductItem.js`)
+Individual menu item card showing name, description, price, and "Add to Order" button
+
+### Payment (`app/components/Payment.js`)
+Payment method selector with support for:
+- Credit/Debit Card (with input fields)
+- Apple Pay
+- Google Pay
+- Cash
+
+## 📊 Data Structure
+
+### Product Data (`app/data/products.js`)
+Menu items organized by category with:
+- Category ID and name
+- Item details (id, name, description, price)
+- Helper functions for searching and filtering products
+
 ## 🛠️ Key Files to Edit
 
-### `app/page.js` - Home Page
-This is your main landing page. Edit this file to change what visitors see first.
+### `app/page.js` - Home/Menu Page
+The main ordering page where users browse the menu and add items to their cart. Features search functionality and navigation to checkout.
+
+### `app/checkout/page.js` - Checkout Page
+Order review page with payment method selection and gratuity options.
+
+### `app/summary/page.js` - Order Confirmation
+Final confirmation page shown after order submission.
 
 ### `app/layout.js` - Site Layout
-This wraps all your pages. Good place for:
-- Navigation bars
-- Footers
-- Global components
-- HTML head content
+This wraps all your pages. Contains global metadata and body structure.
+
+### `app/components/` - Reusable Components
+Create and edit reusable UI components here:
+- Navigation.js - Site navigation
+- ProductList.js - Menu display
+- ProductItem.js - Individual menu items
+- Payment.js - Payment selection
+
+### `app/data/products.js` - Menu Data
+Contains all menu items organized by category. Update this file to modify the menu offerings.
 
 ### `app/globals.css` - Global Styles
 Add your custom CSS here. Tailwind CSS is already configured.
