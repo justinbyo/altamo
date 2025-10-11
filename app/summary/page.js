@@ -8,7 +8,7 @@ export default function Summary() {
   
   useEffect(() => {
     // Generate order number on client side to avoid hydration mismatch
-    setOrderNumber('ORD-' + Math.random().toString(36).substr(2, 9).toUpperCase());
+    setOrderNumber('ORD-' + Math.random().toString(36).substring(2, 11).toUpperCase());
   }, []);
   
   // Mock order data - in a real app this would come from state management
