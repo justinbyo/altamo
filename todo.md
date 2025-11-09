@@ -1,0 +1,10 @@
+- [ ] make the nav element sticky
+- [ ] make top-level menus collapsable ie. "Appetizers" and "Pizza"
+- [ ] remove cash option
+- [x] edit state in place for order page and checkout page
+- [ ] continue to refine pages depending on state
+- [ ] figure out how to handle a mock order -- i.e. each time the user hits "update order" from checkout screen, the summary page needs to update with new total and items etc.
+- [ ] onboarding flow needs to include seat confirmation and instructions
+- [ ] TBD "add payment now" option to submit payment to start tab and add items later
+- [ ] add timer to edit order functionality
+- [ ] after timer is done, show the user a screen that says "order with the pen and pad please"

@@ -89,6 +89,59 @@ Order confirmation page that displays:
 - Payment method and gratuity breakdown
 - Options to edit order or change payment/gratuity
 
+## 🔄 Edit State System
+
+The app supports two main states that change the UI and behavior:
+
+### **Default State** (Normal Flow)
+- **URL:** `/order` → `/checkout` → `/summary`
+- **User Flow:** Browse menu → Add items → Select payment → Submit order → See confirmation
+- **Navigation:** "Checkout" button goes to `/checkout`
+
+### **Edit State** (Order Modification)
+- **URL:** `/order?edit` and `/checkout?edit`
+- **User Flow:** From summary page → Edit existing order → Update items/payment → Update order
+- **Navigation:** "Add Items" button goes to `/checkout?edit`
+
+### **How Edit State Works**
+
+1. **URL Query Parameters:**
+   - `?edit` query parameter activates edit state on any page
+   - Example: `/order?edit`, `/checkout?edit`
+
+2. **State Detection:**
+   ```javascript
+   const searchParams = useSearchParams();
+   const isEditMode = searchParams.get('edit') !== null;
+   ```
+
+3. **Prop Passing to Components:**
+   ```javascript
+   // Pages pass edit state to Navigation component
+   <Navigation 
+     currentPage="order" 
+     cartItemCount={cart.length}
+     isEditMode={isEditMode}  // Critical prop for conditional behavior
+   />
+   ```
+
+4. **Conditional UI with Ternary Operators:**
+   ```javascript
+   // Page titles change based on state
+   {isEditMode ? 'Edit Order - Add Items' : 'Menu'}
+   
+   // Navigation buttons adapt
+   {isEditMode ? 'Add Items' : 'Checkout'}
+   
+   // URLs change to preserve state
+   href={isEditMode ? "/checkout?edit" : "/checkout"}
+   ```
+
+5. **Edit State Features:**
+   - **`/order?edit`:** Shows "Edit Order - Add Items" title, "Add Items" button
+   - **`/checkout?edit`:** Shows "Edit Order" title, locks payment methods, "Update Order" button
+   - **Back navigation preserves state:** `/checkout?edit` → "Back" → `/order?edit`
+
 ## 🧩 Components
 
 ### Navigation (`app/components/Navigation.js`)
@@ -198,3 +251,78 @@ npm run lint
 - **Tailwind CSS** - Styling framework
 - **ESLint** - Code quality tool
 - **Turbopack** - Fast bundler
+
+---
+
+## 📋 Development Changelog
+
+### **November 8, 2025 - Edit State System Implementation**
+
+#### **🎯 Learning Goal:** Implement URL-based state management and conditional UI rendering
+
+#### **Changes Made:**
+
+1. **URL Structure Update:**
+   - Changed main page from `/` to `/order` for clearer routing
+   - Added `/` redirect to `/order` for backward compatibility
+   - **Files modified:** `app/page.js` (redirect), `app/order/page.js` (new main page)
+
+2. **Edit State System:**
+   - Implemented `?edit` query parameter for state management
+   - Added `useSearchParams()` hook to detect edit mode
+   - **Files modified:** `app/order/page.js`, `app/checkout/page.js`
+   - **Code pattern learned:**
+     ```javascript
+     const searchParams = useSearchParams();
+     const isEditMode = searchParams.get('edit') !== null;
+     ```
+
+3. **Prop Passing Architecture:**
+   - Updated Navigation component to receive `isEditMode` prop
+   - Learned about React's "data flows down" principle
+   - **Files modified:** `app/components/Navigation.js`
+   - **Code pattern learned:**
+     ```javascript
+     // Component definition with props
+     export default function Navigation({ currentPage, isEditMode = false }) {
+     
+     // Passing props from parent
+     <Navigation currentPage="order" isEditMode={isEditMode} />
+     ```
+
+4. **Ternary Operators for Conditional UI:**
+   - Implemented conditional rendering based on edit state
+   - Learned ternary operator syntax and usage in JSX
+   - **Code patterns learned:**
+     ```javascript
+     // Conditional text content
+     {isEditMode ? 'Edit Order - Add Items' : 'Menu'}
+     
+     // Conditional URLs with state preservation
+     href={isEditMode ? "/order?edit" : "/order"}
+     
+     // Conditional button text
+     {isEditMode ? 'Add Items' : 'Checkout'}
+     ```
+
+5. **Summary Page Button Updates:**
+   - Updated navigation buttons to use edit state URLs
+   - **File modified:** `app/summary/page.js`
+   - **Links updated:** "Edit Order" → `/order?edit`, "Change Payment" → `/checkout?edit`
+
+#### **🐛 Debugging Session:**
+- **Problem:** Navigation showing wrong `isEditMode` value on checkout page
+- **Solution:** Added console.log debugging to trace prop passing
+- **Learning:** How to systematically debug React prop flow issues
+
+#### **🎓 Key Concepts Learned:**
+1. **URL Query Parameters** - Using `useSearchParams()` to read URL state
+2. **React Props** - Passing data from parent to child components
+3. **Ternary Operators** - `condition ? valueIfTrue : valueIfFalse` for conditional rendering
+4. **State Preservation** - Maintaining state across page navigation via URLs
+5. **Debugging Techniques** - Using console.log to trace data flow in React
+
+#### **🔄 User Flow Now Working:**
+- **Normal:** `/order` → `/checkout` → `/summary`
+- **Edit:** `/summary` → "Edit Order" → `/order?edit` → "Add Items" → `/checkout?edit`
+- **Navigation:** Back buttons preserve edit state throughout the flow

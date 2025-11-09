@@ -80,13 +80,13 @@ export default function Summary() {
         
         <div className="flex gap-4 flex-col sm:flex-row">
           <Link 
-            href="/"
+            href="/order?edit"
             className="flex-1 bg-white border-2 border-gray-300 text-gray-900 py-3 px-4 rounded-lg hover:bg-gray-50 transition-colors font-medium text-center"
           >
             Edit Order
           </Link>
           <Link 
-            href="/checkout"
+            href="/checkout?edit"
             className="flex-1 bg-white border-2 border-gray-300 text-gray-900 py-3 px-4 rounded-lg hover:bg-gray-50 transition-colors font-medium text-center"
           >
             Change Payment/Gratuity
