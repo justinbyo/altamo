@@ -40,12 +40,20 @@ altamo/
 │   ├── checkout/           # Checkout page route
 │   │   └── page.js        # Checkout page - order summary, payment, gratuity
 │   ├── components/         # Reusable components
+│   │   ├── DevPanel.js    # Development debugging panel with order inspection
 │   │   ├── Navigation.js  # Navigation bar with search and cart
+│   │   ├── OrderManagerTest.js # Automated test suite for OrderManager
 │   │   ├── Payment.js     # Payment method selector
-│   │   ├── ProductItem.js # Individual menu item card
+│   │   ├── ProductItem.js # Individual menu item card with quantity controls
 │   │   └── ProductList.js # List of menu items by category
 │   ├── data/              # Data files
 │   │   └── products.js    # Menu items organized by category
+│   ├── lib/               # Utility libraries and business logic
+│   │   └── orderManager.js # Core order state management and persistence
+│   ├── order/             # Order/Menu page route
+│   │   └── page.js        # Main menu page with item selection
+│   ├── schemas/           # Data structure definitions
+│   │   └── order.js       # Order state definitions and constants
 │   ├── summary/           # Order summary page route
 │   │   └── page.js        # Order confirmation page
 │   ├── favicon.ico        # Website icon
@@ -162,7 +170,69 @@ Payment method selector with support for:
 - Google Pay
 - Cash
 
-## 📊 Data Structure
+## � Order State Management System
+
+### **OrderManager Class (`app/lib/orderManager.js`)**
+Central utility class managing all order operations with persistent storage:
+
+#### **Order Lifecycle States:**
+```javascript
+'building'   → User adding items to new order
+'submitted'  → Order completed, payment processed  
+'editing'    → User modifying submitted order
+```
+
+#### **Core Methods:**
+- **`generateOrderId()`** - Creates unique order identifiers (ORD-XXXXX)
+- **`createOrder(orderId)`** - Initializes new order with default state
+- **`getOrder(orderId)`** - Retrieves order from localStorage with error handling
+- **`addItems(orderId, items, isEditMode)`** - Adds items with state-aware logic
+- **`submitOrder(orderId, paymentMethod, gratuity)`** - Processes order submission
+- **`getAllItems(order)`** - Returns all items (original + edit items)
+- **`getCartItems(order)`** - Returns current session items for UI display
+- **`getCurrentSessionItems(order)`** - Returns items being added in current session
+- **`calculateTotal(order)`** - Computes subtotal, gratuity, and total with logging
+
+#### **Data Structure:**
+```javascript
+// Complete order object structure
+{
+  id: 'ORD-ABC123',           // Unique identifier
+  state: 'building',          // Current lifecycle state
+  items: [...],               // Items being built (building state)
+  originalItems: [...],       // Items from initial submission  
+  editItems: [...],          // Items added during edit sessions
+  payment: {
+    method: 'card',           // Payment method selected
+    isLocked: true,           // Prevents changes after submission
+    lastFour: '1234'          // Card display info
+  },
+  gratuity: 18,              // Tip percentage (not amount)
+  createdAt: '2025-11-09...',
+  submittedAt: '2025-11-09...',
+  lastUpdated: '2025-11-09...'
+}
+```
+
+#### **Persistent Storage Features:**
+- **localStorage Integration:** All orders automatically saved with error handling
+- **URL State Synchronization:** Order IDs tracked via `?order=ORD-XXXXX` parameters
+- **Cross-Session Persistence:** Orders survive browser refreshes and navigation
+- **Size Monitoring:** Storage quota detection and logging for debugging
+
+#### **Development & Debugging Tools:**
+- **DevPanel Component:** Real-time order inspection and management interface
+- **Automated Test Suite:** OrderManagerTest component for regression testing  
+- **Debug Methods:** `debugOrder()` for detailed console inspection
+- **Comprehensive Logging:** Tip changes, item additions, state transitions
+
+### **State-Aware UI Components:**
+- **Cart Count Logic:** Shows session items vs. total items based on context
+- **NEW Badge System:** Visual indicators for items added during edit sessions  
+- **Payment Locking:** Prevents payment method changes after submission
+- **Conditional Navigation:** Back buttons and URLs preserve order and edit state
+
+## �📊 Data Structure
 
 ### Product Data (`app/data/products.js`)
 Menu items organized by category with:
@@ -255,6 +325,168 @@ npm run lint
 ---
 
 ## 📋 Development Changelog
+
+### **November 9, 2025 - OrderManager Refinements & Debugging**
+
+#### **🎯 Learning Goal:** Fix edit mode limitations, enhance debugging, and improve tip management
+
+#### **Changes Made:**
+
+1. **Edit Mode Item Limit Fix:**
+   - **Problem:** Users could only add 1 item in edit mode due to state handling bug
+   - **Solution:** Fixed `addItems()` to handle both `'submitted'` and `'editing'` states
+   - **Code pattern learned:**
+     ```javascript
+     // Handle state transitions properly in edit mode
+     if (isEditMode && (order.state === 'submitted' || order.state === 'editing')) {
+       order.editItems = [...(order.editItems || []), ...itemsToAdd];
+       order.state = 'editing';
+     }
+     ```
+
+2. **Cart Count Logic Improvement:**
+   - Created `getCurrentSessionItems()` method for better UX in edit mode
+   - Cart badge now shows items being added in current session, not total items
+   - **Benefits:** Less confusing UI, clearer indication of new items being added
+
+3. **NEW Badge Implementation:**
+   - Added visual indicators for items added during edit sessions
+   - Consistent badge display across checkout and summary pages
+   - **Code pattern learned:**
+     ```javascript
+     {item.isNew && <span className="ml-2 text-xs bg-green-100 text-green-800 px-2 py-1 rounded">NEW</span>}
+     ```
+
+4. **Comprehensive Tip Management Logging:**
+   - **New method:** `OrderManager.updateGratuity()` with change logging
+   - Enhanced `submitOrder()` to log tip changes during submission
+   - Enhanced `calculateTotal()` to log calculation breakdowns
+   - **Checkout page:** Added real-time tip change detection and logging
+   - **Code pattern learned:**
+     ```javascript
+     // Tip change detection with logging
+     const handleGratuityChange = (newGratuity) => {
+       if (newGratuity !== gratuity) {
+         console.log(`💰 User changed gratuity from ${gratuity}% to ${newGratuity}%`);
+         setGratuity(newGratuity);
+       }
+     };
+     ```
+
+5. **Enhanced Development Tools:**
+   - **Updated DevPanel:** More detailed order state inspection
+   - **Automated Test Suite:** `OrderManagerTest` component for regression testing
+   - **Debug Methods:** `debugOrder()` for detailed console inspection
+   - **Error Handling:** Improved localStorage error detection and reporting
+
+#### **🎓 Key Concepts Learned:**
+1. **State Machine Debugging** - Tracking state transitions and handling edge cases
+2. **Session vs. Total State** - Different UI contexts need different data representations
+3. **Real-time User Feedback** - Console logging for development and debugging
+4. **Automated Testing** - Building test suites for complex state management
+5. **Error Boundary Patterns** - Graceful handling of localStorage and serialization errors
+
+#### **🔄 Current Order State Architecture:**
+```javascript
+// Order object structure
+{
+  id: 'ORD-XXXXX',
+  state: 'building' | 'submitted' | 'editing',
+  items: [],        // Items being built (building state)
+  originalItems: [], // Items from initial submission
+  editItems: [],    // Items added during edit sessions
+  payment: { method, isLocked, lastFour },
+  gratuity: 15,     // Tip percentage
+  createdAt: '2025-11-09T...',
+  submittedAt: '2025-11-09T...' | null
+}
+```
+
+---
+
+### **November 9, 2025 - OrderManager Implementation**
+
+#### **🎯 Learning Goal:** Implement persistent order state management with proper architecture
+
+#### **Changes Made:**
+
+1. **OrderManager Utility Class:**
+   - Created comprehensive order management system
+   - **File created:** `app/lib/orderManager.js`
+   - **Features:** Order creation, item management, payment handling, state persistence
+   - **Code pattern learned:**
+     ```javascript
+     // Static class methods for utility operations
+     export class OrderManager {
+       static generateOrderId() { ... }
+       static getOrder(orderId) { ... }
+       static addItems(orderId, items, isEditMode) { ... }
+     }
+     ```
+
+2. **Persistent Storage Integration:**
+   - localStorage used for order persistence across browser sessions
+   - Order data survives page refreshes and navigation
+   - **Code pattern learned:**
+     ```javascript
+     // Safe localStorage usage with error handling
+     try {
+       localStorage.setItem(`order-${orderId}`, JSON.stringify(orderData));
+     } catch (error) { console.error('Error saving:', error); }
+     ```
+
+3. **URL-Based Order Tracking:**
+   - Orders tracked via `?order=ORD-XXXXX` URL parameters
+   - Automatic order ID generation and URL updating
+   - **Code pattern learned:**
+     ```javascript
+     // URL state management with router
+     const params = new URLSearchParams(searchParams);
+     params.set('order', orderId);
+     router.replace(`/order?${params.toString()}`, { scroll: false });
+     ```
+
+4. **Order State Architecture:**
+   - **States:** `building` → `submitted` → `editing`
+   - **Item tracking:** Separate arrays for original vs. edit items
+   - **Payment locking:** Prevents changes after initial submission
+   - **Code pattern learned:**
+     ```javascript
+     // State-based item management
+     if (isEditMode && order.state === 'submitted') {
+       order.editItems = [...order.editItems, ...itemsToAdd];
+       order.state = 'editing';
+     }
+     ```
+
+5. **Component Integration Updates:**
+   - **Order Page:** Integrated OrderManager for item addition and state
+   - **Checkout Page:** Real order data instead of mock data
+   - **Summary Page:** Live order display with edit functionality
+   - **ProductItem:** Added quantity controls with +/- buttons
+   - **Navigation:** Order ID passed through all navigation links
+
+6. **Development Tools:**
+   - **File created:** `app/components/DevPanel.js`
+   - Real-time order debugging and management
+   - Clear all orders functionality for testing
+
+#### **🎓 Key Concepts Learned:**
+1. **Static Class Methods** - Utility classes with static methods for shared operations
+2. **localStorage API** - Client-side persistent storage with error handling
+3. **URL State Management** - Using router to manage application state via URLs
+4. **State Machines** - Order lifecycle management with defined state transitions
+5. **React useEffect** - Managing side effects for order loading and URL updates
+6. **Quantity Controls** - Interactive UI components with state management
+
+#### **🔄 Enhanced User Flow:**
+- **Order Creation:** Automatic ID generation and URL tracking
+- **Item Management:** Quantity selection with persistent cart state
+- **Edit Mode:** Proper separation of original vs. edit items
+- **Payment Locking:** Secure payment state after submission
+- **Cross-Page State:** Order data persists across all pages
+
+---
 
 ### **November 8, 2025 - Edit State System Implementation**
 

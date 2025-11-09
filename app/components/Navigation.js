@@ -2,7 +2,7 @@
 
 import Link from 'next/link';
 
-export default function Navigation({ currentPage = 'order', cartItemCount = 0, onSearchChange, isEditMode = false }) {
+export default function Navigation({ currentPage = 'order', cartItemCount = 0, onSearchChange, isEditMode = false, orderId = null }) {
   console.log('Navigation component - isEditMode:', isEditMode, 'currentPage:', currentPage);
 
   return (
@@ -27,7 +27,7 @@ export default function Navigation({ currentPage = 'order', cartItemCount = 0, o
             
             {currentPage === 'checkout' && (
               <Link
-                href={isEditMode ? "/order?edit" : "/order"} 
+                href={isEditMode ? `/order?edit=order&order=${orderId}` : `/order?order=${orderId}`} 
                 className="ml-8 text-blue-600 hover:text-blue-800">
                 ← Back to menu
               </Link>
@@ -36,7 +36,7 @@ export default function Navigation({ currentPage = 'order', cartItemCount = 0, o
           
           {currentPage === 'order' && (
             <Link 
-              href={isEditMode ? "/checkout?edit" : "/checkout"} 
+              href={isEditMode ? `/checkout?edit=payment&order=${orderId}` : `/checkout?order=${orderId}`} 
               className="flex items-center gap-2 px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors"
             >
               <span>
