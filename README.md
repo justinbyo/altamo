@@ -1,4 +1,4 @@
-# Altamo - Next.js Web App test test test AGAIN AGAIN
+# Altamo - Next.js Web App test test test AGAIN AGAIN AGAIN
 
 A beginner-friendly Next.js application with local development server and live reload functionality.
 
