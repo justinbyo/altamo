@@ -1,370 +1,370 @@
-# Altamo - Next.js Web App
+# Altamo - Aplicación Web Next.js TEST TEST TEST
 
-A beginner-friendly Next.js application with local development server and live reload functionality.
+Una aplicación Next.js amigable para principiantes con servidor de desarrollo local y funcionalidad de recarga en vivo.
 
-## 🚀 Quick Start
+## 🚀 Inicio Rápido
 
-### Prerequisites
-- Node.js installed on your machine
-- npm package manager
+### Requisitos Previos
+- Node.js instalado en tu máquina
+- Administrador de paquetes npm
 
-### Starting the Development Server
+### Iniciar el Servidor de Desarrollo
 
-1. **Open terminal in project directory:**
+1. **Abre la terminal en el directorio del proyecto:**
    ```bash
    cd /Users/justinbyo/development/altamo
    ```
 
-2. **Start the development server:**
+2. **Inicia el servidor de desarrollo:**
    ```bash
    npm run dev
    ```
 
-3. **Open your browser:**
-   - The server typically runs on `http://localhost:3000`
-   - If port 3000 is busy, it will use `http://localhost:3001` (or next available port)
-   - The terminal will show you the exact URL to use
+3. **Abre tu navegador:**
+   - El servidor normalmente se ejecuta en `http://localhost:3000`
+   - Si el puerto 3000 está ocupado, usará `http://localhost:3001` (o el siguiente puerto disponible)
+   - La terminal te mostrará la URL exacta a usar
 
-4. **Start coding!**
-   - Any changes you make will automatically refresh the browser
-   - No need to manually restart the server
+4. **¡Empieza a programar!**
+   - Cualquier cambio que hagas se actualizará automáticamente en el navegador
+   - No necesitas reiniciar el servidor manualmente
 
-### Stopping the Server
-- Press `Ctrl + C` in the terminal to stop the development server
+### Detener el Servidor
+- Presiona `Ctrl + C` en la terminal para detener el servidor de desarrollo
 
-## 📁 Project Structure
+## 📁 Estructura del Proyecto
 
 ```
 altamo/
-├── app/                    # Main application directory (App Router)
-│   ├── checkout/           # Checkout page route
-│   │   └── page.js        # Checkout page - order summary, payment, gratuity
-│   ├── components/         # Reusable components
-│   │   ├── DevPanel.js    # Development debugging panel with order inspection
-│   │   ├── Navigation.js  # Navigation bar with search and cart
-│   │   ├── OrderManagerTest.js # Automated test suite for OrderManager
-│   │   ├── Payment.js     # Payment method selector
-│   │   ├── ProductItem.js # Individual menu item card with quantity controls
-│   │   └── ProductList.js # List of menu items by category
-│   ├── data/              # Data files
-│   │   └── products.js    # Menu items organized by category
-│   ├── lib/               # Utility libraries and business logic
-│   │   └── orderManager.js # Core order state management and persistence
-│   ├── order/             # Order/Menu page route
-│   │   └── page.js        # Main menu page with item selection
-│   ├── schemas/           # Data structure definitions
-│   │   └── order.js       # Order state definitions and constants
-│   ├── summary/           # Order summary page route
-│   │   └── page.js        # Order confirmation page
-│   ├── favicon.ico        # Website icon
-│   ├── globals.css        # Global styles and Tailwind CSS
-│   ├── layout.js          # Root layout component (wraps all pages)
-│   └── page.js            # Home/Menu page - main ordering interface
-├── public/                # Static assets (images, icons, etc.)
-├── .eslintrc.json         # ESLint configuration for code quality
-├── .gitignore             # Git ignore file
-├── .next/                 # Build output (auto-generated, don't edit)
-├── next.config.js         # Next.js configuration
-├── node_modules/          # Dependencies (auto-generated, don't edit)
-├── package.json           # Project dependencies and scripts
-├── package-lock.json      # Dependency lock file
-├── postcss.config.js      # PostCSS configuration for Tailwind
-├── README.md              # This file
-└── tailwind.config.js     # Tailwind CSS configuration
+├── app/                    # Directorio principal de la aplicación (App Router)
+│   ├── checkout/           # Ruta de la página de pago
+│   │   └── page.js        # Página de pago - resumen del pedido, pago, propina
+│   ├── components/         # Componentes reutilizables
+│   │   ├── DevPanel.js    # Panel de depuración para desarrollo con inspección de pedidos
+│   │   ├── Navigation.js  # Barra de navegación con búsqueda y carrito
+│   │   ├── OrderManagerTest.js # Suite de pruebas automatizadas para OrderManager
+│   │   ├── Payment.js     # Selector de método de pago
+│   │   ├── ProductItem.js # Tarjeta individual de artículo del menú con controles de cantidad
+│   │   └── ProductList.js # Lista de artículos del menú por categoría
+│   ├── data/              # Archivos de datos
+│   │   └── products.js    # Artículos del menú organizados por categoría
+│   ├── lib/               # Bibliotecas de utilidades y lógica de negocio
+│   │   └── orderManager.js # Gestión central del estado de pedidos y persistencia
+│   ├── order/             # Ruta de la página de pedido/menú
+│   │   └── page.js        # Página principal del menú con selección de artículos
+│   ├── schemas/           # Definiciones de estructura de datos
+│   │   └── order.js       # Definiciones de estado de pedido y constantes
+│   ├── summary/           # Ruta de la página de resumen del pedido
+│   │   └── page.js        # Página de confirmación del pedido
+│   ├── favicon.ico        # Icono del sitio web
+│   ├── globals.css        # Estilos globales y Tailwind CSS
+│   ├── layout.js          # Componente de diseño raíz (envuelve todas las páginas)
+│   └── page.js            # Página de inicio/menú - interfaz principal de pedidos
+├── public/                # Recursos estáticos (imágenes, iconos, etc.)
+├── .eslintrc.json         # Configuración de ESLint para calidad de código
+├── .gitignore             # Archivo de ignorados de Git
+├── .next/                 # Salida de compilación (auto-generado, no editar)
+├── next.config.js         # Configuración de Next.js
+├── node_modules/          # Dependencias (auto-generado, no editar)
+├── package.json           # Dependencias y scripts del proyecto
+├── package-lock.json      # Archivo de bloqueo de dependencias
+├── postcss.config.js      # Configuración de PostCSS para Tailwind
+├── README.md              # Este archivo
+└── tailwind.config.js     # Configuración de Tailwind CSS
 ```
 
-## 📄 Pages
+## 📄 Páginas
 
-### Home (`/` - `app/page.js`)
-The main menu page where users can:
-- Browse menu items organized by category (Cocktails, Beer, Wine, Appetizers, Sandwiches, Pizza, Entrees, Dessert)
-- Search for specific items using the search bar
-- Add items to their order
-- Navigate to checkout
+### Inicio (`/` - `app/page.js`)
+La página principal del menú donde los usuarios pueden:
+- Explorar artículos del menú organizados por categoría (Cócteles, Cerveza, Vino, Aperitivos, Sándwiches, Pizza, Platos Principales, Postre)
+- Buscar artículos específicos usando la barra de búsqueda
+- Agregar artículos a su pedido
+- Navegar al pago
 
-### Checkout (`/checkout` - `app/checkout/page.js`)
-Order review and payment page where users can:
-- Review their order items and quantities
-- Select payment method (Credit/Debit Card, Apple Pay, Google Pay, Cash)
-- Choose gratuity percentage (15%, 18%, 20%, 25%, or custom)
-- See order summary with subtotal, gratuity, and total
-- Submit their order
+### Pago (`/checkout` - `app/checkout/page.js`)
+Página de revisión del pedido y pago donde los usuarios pueden:
+- Revisar los artículos y cantidades de su pedido
+- Seleccionar método de pago (Tarjeta de Crédito/Débito, Apple Pay, Google Pay, Efectivo)
+- Elegir porcentaje de propina (15%, 18%, 20%, 25% o personalizado)
+- Ver el resumen del pedido con subtotal, propina y total
+- Enviar su pedido
 
-### Summary (`/summary` - `app/summary/page.js`)
-Order confirmation page that displays:
-- Order confirmation with unique order number
-- Complete order details
-- Payment method and gratuity breakdown
-- Options to edit order or change payment/gratuity
+### Resumen (`/summary` - `app/summary/page.js`)
+Página de confirmación del pedido que muestra:
+- Confirmación del pedido con número de pedido único
+- Detalles completos del pedido
+- Método de pago y desglose de la propina
+- Opciones para editar el pedido o cambiar el pago/propina
 
-## 🔄 Edit State System
+## 🔄 Sistema de Estado de Edición
 
-The app supports two main states that change the UI and behavior:
+La aplicación soporta dos estados principales que cambian la interfaz y el comportamiento:
 
-### **Default State** (Normal Flow)
+### **Estado Predeterminado** (Flujo Normal)
 - **URL:** `/order` → `/checkout` → `/summary`
-- **User Flow:** Browse menu → Add items → Select payment → Submit order → See confirmation
-- **Navigation:** "Checkout" button goes to `/checkout`
+- **Flujo del Usuario:** Explorar menú → Agregar artículos → Seleccionar pago → Enviar pedido → Ver confirmación
+- **Navegación:** El botón "Checkout" va a `/checkout`
 
-### **Edit State** (Order Modification)
-- **URL:** `/order?edit` and `/checkout?edit`
-- **User Flow:** From summary page → Edit existing order → Update items/payment → Update order
-- **Navigation:** "Add Items" button goes to `/checkout?edit`
+### **Estado de Edición** (Modificación del Pedido)
+- **URL:** `/order?edit` y `/checkout?edit`
+- **Flujo del Usuario:** Desde la página de resumen → Editar pedido existente → Actualizar artículos/pago → Actualizar pedido
+- **Navegación:** El botón "Add Items" va a `/checkout?edit`
 
-### **How Edit State Works**
+### **Cómo Funciona el Estado de Edición**
 
-1. **URL Query Parameters:**
-   - `?edit` query parameter activates edit state on any page
-   - Example: `/order?edit`, `/checkout?edit`
+1. **Parámetros de Consulta en la URL:**
+   - El parámetro de consulta `?edit` activa el estado de edición en cualquier página
+   - Ejemplo: `/order?edit`, `/checkout?edit`
 
-2. **State Detection:**
+2. **Detección de Estado:**
    ```javascript
    const searchParams = useSearchParams();
    const isEditMode = searchParams.get('edit') !== null;
    ```
 
-3. **Prop Passing to Components:**
+3. **Paso de Props a Componentes:**
    ```javascript
-   // Pages pass edit state to Navigation component
+   // Las páginas pasan el estado de edición al componente Navigation
    <Navigation 
      currentPage="order" 
      cartItemCount={cart.length}
-     isEditMode={isEditMode}  // Critical prop for conditional behavior
+     isEditMode={isEditMode}  // Prop crítico para comportamiento condicional
    />
    ```
 
-4. **Conditional UI with Ternary Operators:**
+4. **UI Condicional con Operadores Ternarios:**
    ```javascript
-   // Page titles change based on state
+   // Los títulos de página cambian según el estado
    {isEditMode ? 'Edit Order - Add Items' : 'Menu'}
    
-   // Navigation buttons adapt
+   // Los botones de navegación se adaptan
    {isEditMode ? 'Add Items' : 'Checkout'}
    
-   // URLs change to preserve state
+   // Las URLs cambian para preservar el estado
    href={isEditMode ? "/checkout?edit" : "/checkout"}
    ```
 
-5. **Edit State Features:**
-   - **`/order?edit`:** Shows "Edit Order - Add Items" title, "Add Items" button
-   - **`/checkout?edit`:** Shows "Edit Order" title, locks payment methods, "Update Order" button
-   - **Back navigation preserves state:** `/checkout?edit` → "Back" → `/order?edit`
+5. **Características del Estado de Edición:**
+   - **`/order?edit`:** Muestra el título "Edit Order - Add Items", botón "Add Items"
+   - **`/checkout?edit`:** Muestra el título "Edit Order", bloquea métodos de pago, botón "Update Order"
+   - **La navegación hacia atrás preserva el estado:** `/checkout?edit` → "Back" → `/order?edit`
 
-## 🧩 Components
+## 🧩 Componentes
 
 ### Navigation (`app/components/Navigation.js`)
-Navigation bar that adapts based on current page:
-- **On Home:** Shows search input and checkout button with cart count
-- **On Checkout:** Shows "Back to Order" link
+Barra de navegación que se adapta según la página actual:
+- **En Inicio:** Muestra campo de búsqueda y botón de pago con contador del carrito
+- **En Pago:** Muestra enlace "Back to Order"
 
 ### ProductList (`app/components/ProductList.js`)
-Displays menu items grouped by category with support for search filtering
+Muestra artículos del menú agrupados por categoría con soporte para filtrado por búsqueda
 
 ### ProductItem (`app/components/ProductItem.js`)
-Individual menu item card showing name, description, price, and "Add to Order" button
+Tarjeta individual de artículo del menú que muestra nombre, descripción, precio y botón "Add to Order"
 
 ### Payment (`app/components/Payment.js`)
-Payment method selector with support for:
-- Credit/Debit Card (with input fields)
+Selector de método de pago con soporte para:
+- Tarjeta de Crédito/Débito (con campos de entrada)
 - Apple Pay
 - Google Pay
-- Cash
+- Efectivo
 
-## � Order State Management System
+## 📦 Sistema de Gestión de Estado de Pedidos
 
-### **OrderManager Class (`app/lib/orderManager.js`)**
-Central utility class managing all order operations with persistent storage:
+### **Clase OrderManager (`app/lib/orderManager.js`)**
+Clase de utilidad central que gestiona todas las operaciones de pedidos con almacenamiento persistente:
 
-#### **Order Lifecycle States:**
+#### **Estados del Ciclo de Vida del Pedido:**
 ```javascript
-'building'   → User adding items to new order
-'submitted'  → Order completed, payment processed  
-'editing'    → User modifying submitted order
+'building'   → El usuario está agregando artículos a un nuevo pedido
+'submitted'  → Pedido completado, pago procesado  
+'editing'    → El usuario está modificando un pedido enviado
 ```
 
-#### **Core Methods:**
-- **`generateOrderId()`** - Creates unique order identifiers (ORD-XXXXX)
-- **`createOrder(orderId)`** - Initializes new order with default state
-- **`getOrder(orderId)`** - Retrieves order from localStorage with error handling
-- **`addItems(orderId, items, isEditMode)`** - Adds items with state-aware logic
-- **`submitOrder(orderId, paymentMethod, gratuity)`** - Processes order submission
-- **`getAllItems(order)`** - Returns all items (original + edit items)
-- **`getCartItems(order)`** - Returns current session items for UI display
-- **`getCurrentSessionItems(order)`** - Returns items being added in current session
-- **`calculateTotal(order)`** - Computes subtotal, gratuity, and total with logging
+#### **Métodos Principales:**
+- **`generateOrderId()`** - Crea identificadores únicos de pedido (ORD-XXXXX)
+- **`createOrder(orderId)`** - Inicializa un nuevo pedido con estado predeterminado
+- **`getOrder(orderId)`** - Recupera el pedido de localStorage con manejo de errores
+- **`addItems(orderId, items, isEditMode)`** - Agrega artículos con lógica consciente del estado
+- **`submitOrder(orderId, paymentMethod, gratuity)`** - Procesa el envío del pedido
+- **`getAllItems(order)`** - Devuelve todos los artículos (originales + artículos de edición)
+- **`getCartItems(order)`** - Devuelve los artículos de la sesión actual para la interfaz
+- **`getCurrentSessionItems(order)`** - Devuelve los artículos que se están agregando en la sesión actual
+- **`calculateTotal(order)`** - Calcula subtotal, propina y total con registro
 
-#### **Data Structure:**
+#### **Estructura de Datos:**
 ```javascript
-// Complete order object structure
+// Estructura completa del objeto de pedido
 {
-  id: 'ORD-ABC123',           // Unique identifier
-  state: 'building',          // Current lifecycle state
-  items: [...],               // Items being built (building state)
-  originalItems: [...],       // Items from initial submission  
-  editItems: [...],          // Items added during edit sessions
+  id: 'ORD-ABC123',           // Identificador único
+  state: 'building',          // Estado actual del ciclo de vida
+  items: [...],               // Artículos en construcción (estado building)
+  originalItems: [...],       // Artículos del envío inicial  
+  editItems: [...],          // Artículos agregados durante sesiones de edición
   payment: {
-    method: 'card',           // Payment method selected
-    isLocked: true,           // Prevents changes after submission
-    lastFour: '1234'          // Card display info
+    method: 'card',           // Método de pago seleccionado
+    isLocked: true,           // Previene cambios después del envío
+    lastFour: '1234'          // Información de visualización de la tarjeta
   },
-  gratuity: 18,              // Tip percentage (not amount)
+  gratuity: 18,              // Porcentaje de propina (no monto)
   createdAt: '2025-11-09...',
   submittedAt: '2025-11-09...',
   lastUpdated: '2025-11-09...'
 }
 ```
 
-#### **Persistent Storage Features:**
-- **localStorage Integration:** All orders automatically saved with error handling
-- **URL State Synchronization:** Order IDs tracked via `?order=ORD-XXXXX` parameters
-- **Cross-Session Persistence:** Orders survive browser refreshes and navigation
-- **Size Monitoring:** Storage quota detection and logging for debugging
+#### **Características de Almacenamiento Persistente:**
+- **Integración con localStorage:** Todos los pedidos se guardan automáticamente con manejo de errores
+- **Sincronización de Estado por URL:** Los IDs de pedido se rastrean mediante parámetros `?order=ORD-XXXXX`
+- **Persistencia entre Sesiones:** Los pedidos sobreviven a recargas del navegador y navegación
+- **Monitoreo de Tamaño:** Detección de cuota de almacenamiento y registro para depuración
 
-#### **Development & Debugging Tools:**
-- **DevPanel Component:** Real-time order inspection and management interface
-- **Automated Test Suite:** OrderManagerTest component for regression testing  
-- **Debug Methods:** `debugOrder()` for detailed console inspection
-- **Comprehensive Logging:** Tip changes, item additions, state transitions
+#### **Herramientas de Desarrollo y Depuración:**
+- **Componente DevPanel:** Interfaz de inspección y gestión de pedidos en tiempo real
+- **Suite de Pruebas Automatizadas:** Componente OrderManagerTest para pruebas de regresión  
+- **Métodos de Depuración:** `debugOrder()` para inspección detallada en consola
+- **Registro Completo:** Cambios de propina, adición de artículos, transiciones de estado
 
-### **State-Aware UI Components:**
-- **Cart Count Logic:** Shows session items vs. total items based on context
-- **NEW Badge System:** Visual indicators for items added during edit sessions  
-- **Payment Locking:** Prevents payment method changes after submission
-- **Conditional Navigation:** Back buttons and URLs preserve order and edit state
+### **Componentes de UI Conscientes del Estado:**
+- **Lógica del Contador del Carrito:** Muestra artículos de la sesión vs. artículos totales según el contexto
+- **Sistema de Insignia NEW:** Indicadores visuales para artículos agregados durante sesiones de edición  
+- **Bloqueo de Pago:** Previene cambios en el método de pago después del envío
+- **Navegación Condicional:** Los botones de retroceso y las URLs preservan el estado del pedido y la edición
 
-## �📊 Data Structure
+## 📊 Estructura de Datos
 
-### Product Data (`app/data/products.js`)
-Menu items organized by category with:
-- Category ID and name
-- Item details (id, name, description, price)
-- Helper functions for searching and filtering products
+### Datos de Productos (`app/data/products.js`)
+Artículos del menú organizados por categoría con:
+- ID y nombre de categoría
+- Detalles del artículo (id, nombre, descripción, precio)
+- Funciones auxiliares para buscar y filtrar productos
 
-## 🛠️ Key Files to Edit
+## 🛠️ Archivos Clave para Editar
 
-### `app/page.js` - Home/Menu Page
-The main ordering page where users browse the menu and add items to their cart. Features search functionality and navigation to checkout.
+### `app/page.js` - Página de Inicio/Menú
+La página principal de pedidos donde los usuarios exploran el menú y agregan artículos a su carrito. Incluye funcionalidad de búsqueda y navegación al pago.
 
-### `app/checkout/page.js` - Checkout Page
-Order review page with payment method selection and gratuity options.
+### `app/checkout/page.js` - Página de Pago
+Página de revisión del pedido con selección de método de pago y opciones de propina.
 
-### `app/summary/page.js` - Order Confirmation
-Final confirmation page shown after order submission.
+### `app/summary/page.js` - Confirmación del Pedido
+Página de confirmación final que se muestra después del envío del pedido.
 
-### `app/layout.js` - Site Layout
-This wraps all your pages. Contains global metadata and body structure.
+### `app/layout.js` - Diseño del Sitio
+Esto envuelve todas tus páginas. Contiene metadatos globales y estructura del cuerpo.
 
-### `app/components/` - Reusable Components
-Create and edit reusable UI components here:
-- Navigation.js - Site navigation
-- ProductList.js - Menu display
-- ProductItem.js - Individual menu items
-- Payment.js - Payment selection
+### `app/components/` - Componentes Reutilizables
+Crea y edita componentes de UI reutilizables aquí:
+- Navigation.js - Navegación del sitio
+- ProductList.js - Visualización del menú
+- ProductItem.js - Artículos individuales del menú
+- Payment.js - Selección de pago
 
-### `app/data/products.js` - Menu Data
-Contains all menu items organized by category. Update this file to modify the menu offerings.
+### `app/data/products.js` - Datos del Menú
+Contiene todos los artículos del menú organizados por categoría. Actualiza este archivo para modificar las opciones del menú.
 
-### `app/globals.css` - Global Styles
-Add your custom CSS here. Tailwind CSS is already configured.
+### `app/globals.css` - Estilos Globales
+Agrega tu CSS personalizado aquí. Tailwind CSS ya está configurado.
 
-## 📝 Development Features
+## 📝 Características de Desarrollo
 
-- **Live Reload:** Changes appear instantly in the browser
-- **Hot Module Replacement:** Updates without losing app state
-- **ESLint:** Automatic code quality checking
-- **Tailwind CSS:** Utility-first CSS framework
-- **Turbopack:** Fast bundler for quick development builds
+- **Recarga en Vivo:** Los cambios aparecen instantáneamente en el navegador
+- **Hot Module Replacement:** Actualizaciones sin perder el estado de la aplicación
+- **ESLint:** Verificación automática de calidad de código
+- **Tailwind CSS:** Framework CSS basado en utilidades
+- **Turbopack:** Empaquetador rápido para compilaciones de desarrollo ágiles
 
-## 🎯 Next Steps for Development
+## 🎯 Próximos Pasos para el Desarrollo
 
-1. **Create new pages:** Add new `.js` files in the `app/` directory
-2. **Add components:** Create reusable components in `app/components/`
-3. **Style with Tailwind:** Use Tailwind classes for quick styling
-4. **Add images:** Place images in `public/` folder
+1. **Crear nuevas páginas:** Agrega nuevos archivos `.js` en el directorio `app/`
+2. **Agregar componentes:** Crea componentes reutilizables en `app/components/`
+3. **Estilizar con Tailwind:** Usa clases de Tailwind para un estilizado rápido
+4. **Agregar imágenes:** Coloca imágenes en la carpeta `public/`
 
-## 📚 Helpful Commands
+## 📚 Comandos Útiles
 
 ```bash
-# Start development server
+# Iniciar servidor de desarrollo
 npm run dev
 
-# Build for production
+# Compilar para producción
 npm run build
 
-# Start production server
+# Iniciar servidor de producción
 npm start
 
-# Run linting
+# Ejecutar linting
 npm run lint
 ```
 
-## 🆘 Troubleshooting
+## 🆘 Solución de Problemas
 
-### Server won't start?
-- Make sure you're in the correct directory
-- Run `npm install` to ensure dependencies are installed
-- Check if another process is using the port
+### ¿El servidor no inicia?
+- Asegúrate de estar en el directorio correcto
+- Ejecuta `npm install` para asegurar que las dependencias estén instaladas
+- Verifica si otro proceso está usando el puerto
 
-### Changes not showing?
-- Make sure the dev server is running
-- Check browser cache (try hard refresh: Cmd+Shift+R on Mac)
-- Check terminal for any error messages
+### ¿Los cambios no se muestran?
+- Asegúrate de que el servidor de desarrollo esté en ejecución
+- Verifica la caché del navegador (intenta una recarga forzada: Cmd+Shift+R en Mac)
+- Revisa la terminal en busca de mensajes de error
 
-### Port already in use?
-- Next.js will automatically find the next available port
-- Check the terminal output for the correct URL to use
+### ¿Puerto ya en uso?
+- Next.js encontrará automáticamente el siguiente puerto disponible
+- Revisa la salida de la terminal para la URL correcta a usar
 
-## 🔧 Built With
+## 🔧 Construido Con
 
-- **Next.js 15.5.4** - React framework
-- **React 18** - UI library
-- **Tailwind CSS** - Styling framework
-- **ESLint** - Code quality tool
-- **Turbopack** - Fast bundler
+- **Next.js 15.5.4** - Framework de React
+- **React 18** - Biblioteca de UI
+- **Tailwind CSS** - Framework de estilos
+- **ESLint** - Herramienta de calidad de código
+- **Turbopack** - Empaquetador rápido
 
 ---
 
-## 📋 Development Changelog
+## 📋 Registro de Cambios de Desarrollo
 
-### **November 9, 2025 - OrderManager Refinements & Debugging**
+### **9 de Noviembre de 2025 - Refinamientos de OrderManager y Depuración**
 
-#### **🎯 Learning Goal:** Fix edit mode limitations, enhance debugging, and improve tip management
+#### **🎯 Objetivo de Aprendizaje:** Corregir limitaciones del modo de edición, mejorar la depuración y optimizar la gestión de propinas
 
-#### **Changes Made:**
+#### **Cambios Realizados:**
 
-1. **Edit Mode Item Limit Fix:**
-   - **Problem:** Users could only add 1 item in edit mode due to state handling bug
-   - **Solution:** Fixed `addItems()` to handle both `'submitted'` and `'editing'` states
-   - **Code pattern learned:**
+1. **Corrección del Límite de Artículos en Modo de Edición:**
+   - **Problema:** Los usuarios solo podían agregar 1 artículo en modo de edición debido a un error en el manejo de estado
+   - **Solución:** Se corrigió `addItems()` para manejar tanto el estado `'submitted'` como `'editing'`
+   - **Patrón de código aprendido:**
      ```javascript
-     // Handle state transitions properly in edit mode
+     // Manejar transiciones de estado correctamente en modo de edición
      if (isEditMode && (order.state === 'submitted' || order.state === 'editing')) {
        order.editItems = [...(order.editItems || []), ...itemsToAdd];
        order.state = 'editing';
      }
      ```
 
-2. **Cart Count Logic Improvement:**
-   - Created `getCurrentSessionItems()` method for better UX in edit mode
-   - Cart badge now shows items being added in current session, not total items
-   - **Benefits:** Less confusing UI, clearer indication of new items being added
+2. **Mejora de la Lógica del Contador del Carrito:**
+   - Se creó el método `getCurrentSessionItems()` para una mejor experiencia de usuario en modo de edición
+   - La insignia del carrito ahora muestra los artículos que se están agregando en la sesión actual, no los artículos totales
+   - **Beneficios:** Interfaz menos confusa, indicación más clara de los nuevos artículos que se están agregando
 
-3. **NEW Badge Implementation:**
-   - Added visual indicators for items added during edit sessions
-   - Consistent badge display across checkout and summary pages
-   - **Code pattern learned:**
+3. **Implementación de la Insignia NEW:**
+   - Se agregaron indicadores visuales para artículos agregados durante sesiones de edición
+   - Visualización consistente de la insignia en las páginas de pago y resumen
+   - **Patrón de código aprendido:**
      ```javascript
      {item.isNew && <span className="ml-2 text-xs bg-green-100 text-green-800 px-2 py-1 rounded">NEW</span>}
      ```
 
-4. **Comprehensive Tip Management Logging:**
-   - **New method:** `OrderManager.updateGratuity()` with change logging
-   - Enhanced `submitOrder()` to log tip changes during submission
-   - Enhanced `calculateTotal()` to log calculation breakdowns
-   - **Checkout page:** Added real-time tip change detection and logging
-   - **Code pattern learned:**
+4. **Registro Completo de Gestión de Propinas:**
+   - **Nuevo método:** `OrderManager.updateGratuity()` con registro de cambios
+   - Se mejoró `submitOrder()` para registrar cambios de propina durante el envío
+   - Se mejoró `calculateTotal()` para registrar desgloses de cálculos
+   - **Página de pago:** Se agregó detección y registro de cambios de propina en tiempo real
+   - **Patrón de código aprendido:**
      ```javascript
-     // Tip change detection with logging
+     // Detección de cambio de propina con registro
      const handleGratuityChange = (newGratuity) => {
        if (newGratuity !== gratuity) {
          console.log(`💰 User changed gratuity from ${gratuity}% to ${newGratuity}%`);
@@ -373,30 +373,30 @@ npm run lint
      };
      ```
 
-5. **Enhanced Development Tools:**
-   - **Updated DevPanel:** More detailed order state inspection
-   - **Automated Test Suite:** `OrderManagerTest` component for regression testing
-   - **Debug Methods:** `debugOrder()` for detailed console inspection
-   - **Error Handling:** Improved localStorage error detection and reporting
+5. **Herramientas de Desarrollo Mejoradas:**
+   - **DevPanel actualizado:** Inspección más detallada del estado del pedido
+   - **Suite de Pruebas Automatizadas:** Componente `OrderManagerTest` para pruebas de regresión
+   - **Métodos de Depuración:** `debugOrder()` para inspección detallada en consola
+   - **Manejo de Errores:** Mejor detección y reporte de errores de localStorage
 
-#### **🎓 Key Concepts Learned:**
-1. **State Machine Debugging** - Tracking state transitions and handling edge cases
-2. **Session vs. Total State** - Different UI contexts need different data representations
-3. **Real-time User Feedback** - Console logging for development and debugging
-4. **Automated Testing** - Building test suites for complex state management
-5. **Error Boundary Patterns** - Graceful handling of localStorage and serialization errors
+#### **🎓 Conceptos Clave Aprendidos:**
+1. **Depuración de Máquinas de Estado** - Rastreo de transiciones de estado y manejo de casos límite
+2. **Estado de Sesión vs. Total** - Diferentes contextos de UI necesitan diferentes representaciones de datos
+3. **Retroalimentación en Tiempo Real al Usuario** - Registro en consola para desarrollo y depuración
+4. **Pruebas Automatizadas** - Construcción de suites de pruebas para gestión de estado compleja
+5. **Patrones de Límite de Error** - Manejo elegante de errores de localStorage y serialización
 
-#### **🔄 Current Order State Architecture:**
+#### **🔄 Arquitectura Actual del Estado del Pedido:**
 ```javascript
-// Order object structure
+// Estructura del objeto de pedido
 {
   id: 'ORD-XXXXX',
   state: 'building' | 'submitted' | 'editing',
-  items: [],        // Items being built (building state)
-  originalItems: [], // Items from initial submission
-  editItems: [],    // Items added during edit sessions
+  items: [],        // Artículos en construcción (estado building)
+  originalItems: [], // Artículos del envío inicial
+  editItems: [],    // Artículos agregados durante sesiones de edición
   payment: { method, isLocked, lastFour },
-  gratuity: 15,     // Tip percentage
+  gratuity: 15,     // Porcentaje de propina
   createdAt: '2025-11-09T...',
   submittedAt: '2025-11-09T...' | null
 }
@@ -404,19 +404,19 @@ npm run lint
 
 ---
 
-### **November 9, 2025 - OrderManager Implementation**
+### **9 de Noviembre de 2025 - Implementación de OrderManager**
 
-#### **🎯 Learning Goal:** Implement persistent order state management with proper architecture
+#### **🎯 Objetivo de Aprendizaje:** Implementar gestión persistente del estado de pedidos con arquitectura adecuada
 
-#### **Changes Made:**
+#### **Cambios Realizados:**
 
-1. **OrderManager Utility Class:**
-   - Created comprehensive order management system
-   - **File created:** `app/lib/orderManager.js`
-   - **Features:** Order creation, item management, payment handling, state persistence
-   - **Code pattern learned:**
+1. **Clase de Utilidad OrderManager:**
+   - Se creó un sistema integral de gestión de pedidos
+   - **Archivo creado:** `app/lib/orderManager.js`
+   - **Características:** Creación de pedidos, gestión de artículos, manejo de pagos, persistencia de estado
+   - **Patrón de código aprendido:**
      ```javascript
-     // Static class methods for utility operations
+     // Métodos de clase estáticos para operaciones de utilidad
      export class OrderManager {
        static generateOrderId() { ... }
        static getOrder(orderId) { ... }
@@ -424,137 +424,137 @@ npm run lint
      }
      ```
 
-2. **Persistent Storage Integration:**
-   - localStorage used for order persistence across browser sessions
-   - Order data survives page refreshes and navigation
-   - **Code pattern learned:**
+2. **Integración de Almacenamiento Persistente:**
+   - Se usa localStorage para la persistencia de pedidos entre sesiones del navegador
+   - Los datos del pedido sobreviven a recargas de página y navegación
+   - **Patrón de código aprendido:**
      ```javascript
-     // Safe localStorage usage with error handling
+     // Uso seguro de localStorage con manejo de errores
      try {
        localStorage.setItem(`order-${orderId}`, JSON.stringify(orderData));
      } catch (error) { console.error('Error saving:', error); }
      ```
 
-3. **URL-Based Order Tracking:**
-   - Orders tracked via `?order=ORD-XXXXX` URL parameters
-   - Automatic order ID generation and URL updating
-   - **Code pattern learned:**
+3. **Seguimiento de Pedidos Basado en URL:**
+   - Los pedidos se rastrean mediante parámetros de URL `?order=ORD-XXXXX`
+   - Generación automática de ID de pedido y actualización de URL
+   - **Patrón de código aprendido:**
      ```javascript
-     // URL state management with router
+     // Gestión de estado por URL con router
      const params = new URLSearchParams(searchParams);
      params.set('order', orderId);
      router.replace(`/order?${params.toString()}`, { scroll: false });
      ```
 
-4. **Order State Architecture:**
-   - **States:** `building` → `submitted` → `editing`
-   - **Item tracking:** Separate arrays for original vs. edit items
-   - **Payment locking:** Prevents changes after initial submission
-   - **Code pattern learned:**
+4. **Arquitectura del Estado del Pedido:**
+   - **Estados:** `building` → `submitted` → `editing`
+   - **Seguimiento de artículos:** Arrays separados para artículos originales vs. artículos de edición
+   - **Bloqueo de pago:** Previene cambios después del envío inicial
+   - **Patrón de código aprendido:**
      ```javascript
-     // State-based item management
+     // Gestión de artículos basada en estado
      if (isEditMode && order.state === 'submitted') {
        order.editItems = [...order.editItems, ...itemsToAdd];
        order.state = 'editing';
      }
      ```
 
-5. **Component Integration Updates:**
-   - **Order Page:** Integrated OrderManager for item addition and state
-   - **Checkout Page:** Real order data instead of mock data
-   - **Summary Page:** Live order display with edit functionality
-   - **ProductItem:** Added quantity controls with +/- buttons
-   - **Navigation:** Order ID passed through all navigation links
+5. **Actualizaciones de Integración de Componentes:**
+   - **Página de Pedido:** Se integró OrderManager para adición de artículos y estado
+   - **Página de Pago:** Datos reales de pedido en lugar de datos simulados
+   - **Página de Resumen:** Visualización en vivo del pedido con funcionalidad de edición
+   - **ProductItem:** Se agregaron controles de cantidad con botones +/-
+   - **Navigation:** ID de pedido pasado a través de todos los enlaces de navegación
 
-6. **Development Tools:**
-   - **File created:** `app/components/DevPanel.js`
-   - Real-time order debugging and management
-   - Clear all orders functionality for testing
+6. **Herramientas de Desarrollo:**
+   - **Archivo creado:** `app/components/DevPanel.js`
+   - Depuración y gestión de pedidos en tiempo real
+   - Funcionalidad para borrar todos los pedidos para pruebas
 
-#### **🎓 Key Concepts Learned:**
-1. **Static Class Methods** - Utility classes with static methods for shared operations
-2. **localStorage API** - Client-side persistent storage with error handling
-3. **URL State Management** - Using router to manage application state via URLs
-4. **State Machines** - Order lifecycle management with defined state transitions
-5. **React useEffect** - Managing side effects for order loading and URL updates
-6. **Quantity Controls** - Interactive UI components with state management
+#### **🎓 Conceptos Clave Aprendidos:**
+1. **Métodos de Clase Estáticos** - Clases de utilidad con métodos estáticos para operaciones compartidas
+2. **API de localStorage** - Almacenamiento persistente del lado del cliente con manejo de errores
+3. **Gestión de Estado por URL** - Uso del router para gestionar el estado de la aplicación mediante URLs
+4. **Máquinas de Estado** - Gestión del ciclo de vida del pedido con transiciones de estado definidas
+5. **React useEffect** - Gestión de efectos secundarios para carga de pedidos y actualizaciones de URL
+6. **Controles de Cantidad** - Componentes de UI interactivos con gestión de estado
 
-#### **🔄 Enhanced User Flow:**
-- **Order Creation:** Automatic ID generation and URL tracking
-- **Item Management:** Quantity selection with persistent cart state
-- **Edit Mode:** Proper separation of original vs. edit items
-- **Payment Locking:** Secure payment state after submission
-- **Cross-Page State:** Order data persists across all pages
+#### **🔄 Flujo de Usuario Mejorado:**
+- **Creación de Pedido:** Generación automática de ID y seguimiento por URL
+- **Gestión de Artículos:** Selección de cantidad con estado persistente del carrito
+- **Modo de Edición:** Separación adecuada de artículos originales vs. artículos de edición
+- **Bloqueo de Pago:** Estado de pago seguro después del envío
+- **Estado entre Páginas:** Los datos del pedido persisten en todas las páginas
 
 ---
 
-### **November 8, 2025 - Edit State System Implementation**
+### **8 de Noviembre de 2025 - Implementación del Sistema de Estado de Edición**
 
-#### **🎯 Learning Goal:** Implement URL-based state management and conditional UI rendering
+#### **🎯 Objetivo de Aprendizaje:** Implementar gestión de estado basada en URL y renderizado condicional de UI
 
-#### **Changes Made:**
+#### **Cambios Realizados:**
 
-1. **URL Structure Update:**
-   - Changed main page from `/` to `/order` for clearer routing
-   - Added `/` redirect to `/order` for backward compatibility
-   - **Files modified:** `app/page.js` (redirect), `app/order/page.js` (new main page)
+1. **Actualización de la Estructura de URL:**
+   - Se cambió la página principal de `/` a `/order` para un enrutamiento más claro
+   - Se agregó redirección de `/` a `/order` para compatibilidad retroactiva
+   - **Archivos modificados:** `app/page.js` (redirección), `app/order/page.js` (nueva página principal)
 
-2. **Edit State System:**
-   - Implemented `?edit` query parameter for state management
-   - Added `useSearchParams()` hook to detect edit mode
-   - **Files modified:** `app/order/page.js`, `app/checkout/page.js`
-   - **Code pattern learned:**
+2. **Sistema de Estado de Edición:**
+   - Se implementó el parámetro de consulta `?edit` para gestión de estado
+   - Se agregó el hook `useSearchParams()` para detectar el modo de edición
+   - **Archivos modificados:** `app/order/page.js`, `app/checkout/page.js`
+   - **Patrón de código aprendido:**
      ```javascript
      const searchParams = useSearchParams();
      const isEditMode = searchParams.get('edit') !== null;
      ```
 
-3. **Prop Passing Architecture:**
-   - Updated Navigation component to receive `isEditMode` prop
-   - Learned about React's "data flows down" principle
-   - **Files modified:** `app/components/Navigation.js`
-   - **Code pattern learned:**
+3. **Arquitectura de Paso de Props:**
+   - Se actualizó el componente Navigation para recibir el prop `isEditMode`
+   - Se aprendió sobre el principio de "los datos fluyen hacia abajo" de React
+   - **Archivos modificados:** `app/components/Navigation.js`
+   - **Patrón de código aprendido:**
      ```javascript
-     // Component definition with props
+     // Definición de componente con props
      export default function Navigation({ currentPage, isEditMode = false }) {
      
-     // Passing props from parent
+     // Pasando props desde el padre
      <Navigation currentPage="order" isEditMode={isEditMode} />
      ```
 
-4. **Ternary Operators for Conditional UI:**
-   - Implemented conditional rendering based on edit state
-   - Learned ternary operator syntax and usage in JSX
-   - **Code patterns learned:**
+4. **Operadores Ternarios para UI Condicional:**
+   - Se implementó renderizado condicional basado en el estado de edición
+   - Se aprendió la sintaxis y uso del operador ternario en JSX
+   - **Patrones de código aprendidos:**
      ```javascript
-     // Conditional text content
+     // Contenido de texto condicional
      {isEditMode ? 'Edit Order - Add Items' : 'Menu'}
      
-     // Conditional URLs with state preservation
+     // URLs condicionales con preservación de estado
      href={isEditMode ? "/order?edit" : "/order"}
      
-     // Conditional button text
+     // Texto de botón condicional
      {isEditMode ? 'Add Items' : 'Checkout'}
      ```
 
-5. **Summary Page Button Updates:**
-   - Updated navigation buttons to use edit state URLs
-   - **File modified:** `app/summary/page.js`
-   - **Links updated:** "Edit Order" → `/order?edit`, "Change Payment" → `/checkout?edit`
+5. **Actualizaciones de Botones de la Página de Resumen:**
+   - Se actualizaron los botones de navegación para usar URLs con estado de edición
+   - **Archivo modificado:** `app/summary/page.js`
+   - **Enlaces actualizados:** "Edit Order" → `/order?edit`, "Change Payment" → `/checkout?edit`
 
-#### **🐛 Debugging Session:**
-- **Problem:** Navigation showing wrong `isEditMode` value on checkout page
-- **Solution:** Added console.log debugging to trace prop passing
-- **Learning:** How to systematically debug React prop flow issues
+#### **🐛 Sesión de Depuración:**
+- **Problema:** La navegación mostraba un valor incorrecto de `isEditMode` en la página de pago
+- **Solución:** Se agregó depuración con console.log para rastrear el paso de props
+- **Aprendizaje:** Cómo depurar sistemáticamente problemas de flujo de props en React
 
-#### **🎓 Key Concepts Learned:**
-1. **URL Query Parameters** - Using `useSearchParams()` to read URL state
-2. **React Props** - Passing data from parent to child components
-3. **Ternary Operators** - `condition ? valueIfTrue : valueIfFalse` for conditional rendering
-4. **State Preservation** - Maintaining state across page navigation via URLs
-5. **Debugging Techniques** - Using console.log to trace data flow in React
+#### **🎓 Conceptos Clave Aprendidos:**
+1. **Parámetros de Consulta en URL** - Uso de `useSearchParams()` para leer el estado de la URL
+2. **Props de React** - Pasar datos de componentes padre a hijo
+3. **Operadores Ternarios** - `condición ? valorSiVerdadero : valorSiFalso` para renderizado condicional
+4. **Preservación de Estado** - Mantener el estado a través de la navegación entre páginas mediante URLs
+5. **Técnicas de Depuración** - Uso de console.log para rastrear el flujo de datos en React
 
-#### **🔄 User Flow Now Working:**
+#### **🔄 Flujo de Usuario Ahora Funcional:**
 - **Normal:** `/order` → `/checkout` → `/summary`
-- **Edit:** `/summary` → "Edit Order" → `/order?edit` → "Add Items" → `/checkout?edit`
-- **Navigation:** Back buttons preserve edit state throughout the flow
+- **Edición:** `/summary` → "Edit Order" → `/order?edit` → "Add Items" → `/checkout?edit`
+- **Navegación:** Los botones de retroceso preservan el estado de edición a lo largo del flujo
